@@ -53,7 +53,7 @@ export default function Header() {
             <Link href="/" className="flex items-center gap-2">
               <div className="relative w-10 h-10">
                 <Image
-                  src="/assets/icon.png"
+                  src="assets/icon.png"
                   alt="Memory Gallery Logo"
                   fill
                   className="object-contain"
