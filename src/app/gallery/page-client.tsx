@@ -12,19 +12,19 @@ import Header from "@/components/header";
 const galleryImages = [
   {
     id: 1,
-    src: "assets/classical/001.JPG",
+    src: "assets/western/001.jpg",
     alt: "Gallery Image 1",
     title: "Summer Memories",
   },
   {
     id: 2,
-    src: "assets/classical/002.jpg",
+    src: "assets/saree/002.JPG",
     alt: "Gallery Image 2",
     title: "Winter Wonderland",
   },
   {
     id: 3,
-    src: "assets/saree/003.jpg",
+    src: "assets/classical/027.JPG",
     alt: "Gallery Image 3",
     title: "Spring Blossoms",
   },
@@ -36,7 +36,7 @@ const galleryImages = [
   },
   {
     id: 5,
-    src: "assets/western/001.jpg",
+    src: "assets/ncc/001.jpg",
     alt: "Gallery Image 5",
     title: "Beach Day",
   },
@@ -48,19 +48,19 @@ const galleryImages = [
   },
   {
     id: 7,
-    src: "assets/saree/006.jpg",
+    src: "assets/saree/019.jpg",
     alt: "Gallery Image 7",
     title: "City Lights",
   },
   {
     id: 8,
-    src: "assets/western/007.jpg",
+    src: "assets/western/015.jpg",
     alt: "Gallery Image 8",
     title: "Countryside",
   },
   {
     id: 9,
-    src: "assets/classical/008.jpg",
+    src: "assets/ncc/002.jpg",
     alt: "Gallery Image 9",
     title: "Sunset Views",
   },
