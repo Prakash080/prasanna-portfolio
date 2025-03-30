@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { useTheme } from "@/components/theme-provider"
-import { Button } from "@/components/ui/button"
-import { MoonStar, SunMoon } from "lucide-react"
-import { motion } from "framer-motion"
+import { useTheme } from "@/components/theme-provider";
+import { Button } from "@/components/ui/button";
+import { MoonStar, SunMoon } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme()
+  const { theme, setTheme } = useTheme();
 
   return (
     <Button
@@ -22,10 +22,13 @@ export function ThemeToggle() {
         transition={{ duration: 0.2 }}
         key={theme === "dark" ? "dark" : "light"}
       >
-        {theme === "dark" ? <SunMoon className="h-5 w-5 text-gold" /> : <MoonStar className="h-5 w-5 text-gold" />}
+        {theme === "dark" ? (
+          <SunMoon className="h-5 w-5 text-gold" />
+        ) : (
+          <MoonStar className="h-5 w-5 text-gold" />
+        )}
       </motion.div>
       <span className="sr-only">Toggle theme</span>
     </Button>
-  )
+  );
 }
-

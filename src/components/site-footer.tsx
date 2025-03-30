@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { Mail, Phone } from "lucide-react"
-import { motion } from "framer-motion"
-import Image from "next/image"
-import { contacts } from "@/constants/constants"
+import Link from "next/link";
+import { Mail, Phone } from "lucide-react";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { contacts } from "@/constants/constants";
 
 export function SiteFooter() {
   return (
@@ -18,9 +18,10 @@ export function SiteFooter() {
             transition={{ duration: 0.6 }}
             className="space-y-4"
           >
-            <Image src={"logo.png"} alt={"logo"} height={64} width={64}/>
+            <Image src={"logo.png"} alt={"logo"} height={64} width={64} />
             <p className="text-muted-foreground">
-              Celebrating the art of classical dance through performances, workshops, and cultural events.
+              Celebrating the art of classical dance through performances,
+              workshops, and cultural events.
             </p>
           </motion.div>
 
@@ -34,22 +35,34 @@ export function SiteFooter() {
             <h4 className="text-lg font-medium">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-muted-foreground hover:text-gold transition-colors">
+                <Link
+                  href="/"
+                  className="text-muted-foreground hover:text-gold transition-colors"
+                >
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-muted-foreground hover:text-gold transition-colors">
+                <Link
+                  href="/about"
+                  className="text-muted-foreground hover:text-gold transition-colors"
+                >
                   About
                 </Link>
               </li>
               <li>
-                <Link href="/performances" className="text-muted-foreground hover:text-gold transition-colors">
+                <Link
+                  href="/performances"
+                  className="text-muted-foreground hover:text-gold transition-colors"
+                >
                   Performances
                 </Link>
               </li>
               <li>
-                <Link href="/gallery" className="text-muted-foreground hover:text-gold transition-colors">
+                <Link
+                  href="/gallery"
+                  className="text-muted-foreground hover:text-gold transition-colors"
+                >
                   Gallery
                 </Link>
               </li>
@@ -66,22 +79,34 @@ export function SiteFooter() {
             <h4 className="text-lg font-medium">More</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/videos" className="text-muted-foreground hover:text-gold transition-colors">
+                <Link
+                  href="/videos"
+                  className="text-muted-foreground hover:text-gold transition-colors"
+                >
                   Videos
                 </Link>
               </li>
               <li>
-                <Link href="/awards" className="text-muted-foreground hover:text-gold transition-colors">
+                <Link
+                  href="/awards"
+                  className="text-muted-foreground hover:text-gold transition-colors"
+                >
                   Awards
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-muted-foreground hover:text-gold transition-colors">
+                <Link
+                  href="/contact"
+                  className="text-muted-foreground hover:text-gold transition-colors"
+                >
                   Contact
                 </Link>
               </li>
               <li>
-                <Link href="/bookings" className="text-muted-foreground hover:text-gold transition-colors">
+                <Link
+                  href="/bookings"
+                  className="text-muted-foreground hover:text-gold transition-colors"
+                >
                   Bookings
                 </Link>
               </li>
@@ -138,5 +163,5 @@ export function SiteFooter() {
         </motion.div>
       </div>
     </footer>
-  )
+  );
 }

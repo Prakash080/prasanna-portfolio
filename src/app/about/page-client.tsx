@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import { motion } from "framer-motion"
-import { SiteHeader } from "@/components/site-header"
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { SiteHeader } from "@/components/site-header";
 
 export default function AboutPageClient() {
   return (
@@ -18,7 +18,9 @@ export default function AboutPageClient() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h1 className="text-4xl md:text-5xl font-serif font-bold mb-6">About the Artist</h1>
+            <h1 className="text-4xl md:text-5xl font-serif font-bold mb-6">
+              About the Artist
+            </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               My journey in classical dance, training, and artistic philosophy.
             </p>
@@ -46,23 +48,31 @@ export default function AboutPageClient() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="space-y-6"
             >
-              <h2 className="text-3xl font-serif font-bold">My Dance Journey</h2>
+              <h2 className="text-3xl font-serif font-bold">
+                My Dance Journey
+              </h2>
               <p className="text-muted-foreground">
-                My journey in classical dance began at the age of seven, when I was first introduced to the intricate
-                footwork and expressive gestures of Bharatanatyam. What started as childhood curiosity quickly blossomed
-                into a lifelong passion.
+                My journey in classical dance began at the age of seven, when I
+                was first introduced to the intricate footwork and expressive
+                gestures of Bharatanatyam. What started as childhood curiosity
+                quickly blossomed into a lifelong passion.
               </p>
               <p className="text-muted-foreground">
-                Under the guidance of renowned gurus, I spent years mastering the technical aspects of multiple dance
-                forms, including Kathak and Odissi, while developing my own artistic voice and interpretation.
+                Under the guidance of renowned gurus, I spent years mastering
+                the technical aspects of multiple dance forms, including Kathak
+                and Odissi, while developing my own artistic voice and
+                interpretation.
               </p>
               <p className="text-muted-foreground">
-                Today, with over 15 years of training and performance experience, I strive to preserve the rich
-                traditions of classical dance while exploring contemporary themes and innovative choreography.
+                Today, with over 15 years of training and performance
+                experience, I strive to preserve the rich traditions of
+                classical dance while exploring contemporary themes and
+                innovative choreography.
               </p>
               <div className="pt-4">
                 <blockquote className="border-l-4 border-primary pl-4 italic">
-                  Dance is the hidden language of the soul. It communicates emotions that words cannot express.
+                  Dance is the hidden language of the soul. It communicates
+                  emotions that words cannot express.
                 </blockquote>
               </div>
             </motion.div>
@@ -80,7 +90,9 @@ export default function AboutPageClient() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">Training & Education</h2>
+            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">
+              Training & Education
+            </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               My formal training and educational background in classical dance.
             </p>
@@ -127,9 +139,15 @@ export default function AboutPageClient() {
                   className="relative pl-10 border-l border-primary/30"
                 >
                   <div className="absolute left-[-8px] top-0 w-4 h-4 rounded-full bg-primary" />
-                  <div className="mb-1 text-sm font-medium text-primary">{item.year}</div>
-                  <h3 className="text-xl font-serif font-semibold mb-1">{item.title}</h3>
-                  <div className="text-sm text-muted-foreground mb-3">{item.institution}</div>
+                  <div className="mb-1 text-sm font-medium text-primary">
+                    {item.year}
+                  </div>
+                  <h3 className="text-xl font-serif font-semibold mb-1">
+                    {item.title}
+                  </h3>
+                  <div className="text-sm text-muted-foreground mb-3">
+                    {item.institution}
+                  </div>
                   <p className="text-muted-foreground">{item.description}</p>
                 </motion.div>
               ))}
@@ -149,21 +167,27 @@ export default function AboutPageClient() {
               transition={{ duration: 0.6 }}
               className="space-y-6 order-2 md:order-1"
             >
-              <h2 className="text-3xl font-serif font-bold">Artistic Philosophy</h2>
+              <h2 className="text-3xl font-serif font-bold">
+                Artistic Philosophy
+              </h2>
               <p className="text-muted-foreground">
-                I believe that classical dance is not merely a performance art but a spiritual practice that connects us
-                to our cultural roots and universal human emotions. Each movement, gesture, and expression carries
-                centuries of tradition and meaning.
+                I believe that classical dance is not merely a performance art
+                but a spiritual practice that connects us to our cultural roots
+                and universal human emotions. Each movement, gesture, and
+                expression carries centuries of tradition and meaning.
               </p>
               <p className="text-muted-foreground">
-                My approach to dance balances reverence for tradition with creative innovation. While I am deeply
-                committed to preserving the authentic techniques and aesthetics of classical forms, I also explore how
-                these ancient art forms can speak to contemporary audiences and address modern themes.
+                My approach to dance balances reverence for tradition with
+                creative innovation. While I am deeply committed to preserving
+                the authentic techniques and aesthetics of classical forms, I
+                also explore how these ancient art forms can speak to
+                contemporary audiences and address modern themes.
               </p>
               <p className="text-muted-foreground">
-                Through my performances and teaching, I aim to make classical dance accessible to diverse audiences
-                while maintaining its depth and integrity. I see dance as a powerful medium for cultural exchange,
-                storytelling, and emotional expression.
+                Through my performances and teaching, I aim to make classical
+                dance accessible to diverse audiences while maintaining its
+                depth and integrity. I see dance as a powerful medium for
+                cultural exchange, storytelling, and emotional expression.
               </p>
             </motion.div>
 
@@ -197,9 +221,12 @@ export default function AboutPageClient() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">Teaching & Mentorship</h2>
+            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">
+              Teaching & Mentorship
+            </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Passing on the tradition through workshops, classes, and mentorship programs.
+              Passing on the tradition through workshops, classes, and
+              mentorship programs.
             </p>
           </motion.div>
 
@@ -229,7 +256,9 @@ export default function AboutPageClient() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-card rounded-lg p-6 shadow-md"
               >
-                <h3 className="text-xl font-serif font-semibold mb-4">{item.title}</h3>
+                <h3 className="text-xl font-serif font-semibold mb-4">
+                  {item.title}
+                </h3>
                 <p className="text-muted-foreground">{item.description}</p>
               </motion.div>
             ))}
@@ -237,6 +266,5 @@ export default function AboutPageClient() {
         </div>
       </section>
     </main>
-  )
+  );
 }
-

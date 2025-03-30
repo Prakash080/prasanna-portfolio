@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Image from "next/image"
-import { motion } from "framer-motion"
-import { SiteHeader } from "@/components/site-header"
-import { Button } from "@/components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Calendar, MapPin, Clock, Ticket, ExternalLink } from "lucide-react"
+import { useState } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { SiteHeader } from "@/components/site-header";
+import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Calendar, MapPin, Clock, Ticket, ExternalLink } from "lucide-react";
 
 // Sample performance data
 const upcomingPerformances = [
@@ -43,7 +43,7 @@ const upcomingPerformances = [
     image: "/placeholder.svg?height=600&width=800&text=Performance+3",
     ticketLink: "#",
   },
-]
+];
 
 const pastPerformances = [
   {
@@ -86,10 +86,10 @@ const pastPerformances = [
     image: "/placeholder.svg?height=600&width=800&text=Past+Performance+4",
     videoLink: "#",
   },
-]
+];
 
 export default function PerformancesPageClient() {
-  const [activeTab, setActiveTab] = useState("upcoming")
+  const [activeTab, setActiveTab] = useState("upcoming");
 
   return (
     <main className="min-h-screen pt-20">
@@ -104,13 +104,20 @@ export default function PerformancesPageClient() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h1 className="text-4xl md:text-5xl font-serif font-bold mb-6">Performances</h1>
+            <h1 className="text-4xl md:text-5xl font-serif font-bold mb-6">
+              Performances
+            </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Upcoming shows and past performances showcasing classical dance in various venues and festivals.
+              Upcoming shows and past performances showcasing classical dance in
+              various venues and festivals.
             </p>
           </motion.div>
 
-          <Tabs defaultValue="upcoming" className="w-full" onValueChange={setActiveTab}>
+          <Tabs
+            defaultValue="upcoming"
+            className="w-full"
+            onValueChange={setActiveTab}
+          >
             <div className="flex justify-center mb-8">
               <TabsList>
                 <TabsTrigger value="upcoming" className="text-base px-6">
@@ -121,8 +128,7 @@ export default function PerformancesPageClient() {
                 </TabsTrigger>
               </TabsList>
             </div>
-
-            <TabsContent value="upcoming">
+            {activeTab == "upcoming" ? <TabsContent value="upcoming">
               <div className="space-y-12">
                 {upcomingPerformances.map((performance, index) => (
                   <motion.div
@@ -143,7 +149,9 @@ export default function PerformancesPageClient() {
                       </div>
                       <div className="p-6 md:p-8 flex flex-col justify-between">
                         <div>
-                          <h2 className="text-2xl font-serif font-bold mb-4">{performance.title}</h2>
+                          <h2 className="text-2xl font-serif font-bold mb-4">
+                            {performance.title}
+                          </h2>
                           <div className="space-y-3 mb-6">
                             <div className="flex items-center text-muted-foreground">
                               <Calendar className="h-4 w-4 mr-2 text-primary" />
@@ -158,7 +166,9 @@ export default function PerformancesPageClient() {
                               <span>{performance.venue}</span>
                             </div>
                           </div>
-                          <p className="text-muted-foreground mb-6">{performance.description}</p>
+                          <p className="text-muted-foreground mb-6">
+                            {performance.description}
+                          </p>
                         </div>
                         <div className="flex flex-col sm:flex-row gap-4">
                           <Button className="btn-elegant-filled">
@@ -173,9 +183,7 @@ export default function PerformancesPageClient() {
                   </motion.div>
                 ))}
               </div>
-            </TabsContent>
-
-            <TabsContent value="past">
+            </TabsContent> : <TabsContent value="past">
               <div className="grid md:grid-cols-2 gap-8">
                 {pastPerformances.map((performance, index) => (
                   <motion.div
@@ -194,7 +202,9 @@ export default function PerformancesPageClient() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                         <div className="p-4">
-                          <h3 className="text-xl font-serif font-bold text-white mb-1">{performance.title}</h3>
+                          <h3 className="text-xl font-serif font-bold text-white mb-1">
+                            {performance.title}
+                          </h3>
                           <div className="flex items-center text-white/80 text-sm">
                             <Calendar className="h-3 w-3 mr-1" />
                             <span>{performance.date}</span>
@@ -207,18 +217,21 @@ export default function PerformancesPageClient() {
                         <MapPin className="h-4 w-4 mr-2 text-primary" />
                         <span>{performance.venue}</span>
                       </div>
-                      <p className="text-muted-foreground mb-4">{performance.description}</p>
+                      <p className="text-muted-foreground mb-4">
+                        {performance.description}
+                      </p>
                       <Button variant="outline" size="sm" className="w-full">
-                        <ExternalLink className="h-4 w-4 mr-2" /> Watch Performance
+                        <ExternalLink className="h-4 w-4 mr-2" /> Watch
+                        Performance
                       </Button>
                     </div>
                   </motion.div>
                 ))}
               </div>
-            </TabsContent>
+            </TabsContent>}
           </Tabs>
         </div>
       </section>
     </main>
-  )
+  );
 }

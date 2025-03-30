@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Image from "next/image"
-import { motion, AnimatePresence } from "framer-motion"
-import { SiteHeader } from "@/components/site-header"
-import { Button } from "@/components/ui/button"
-import { ChevronLeft, ChevronRight, X } from "lucide-react"
+import { useState } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { SiteHeader } from "@/components/site-header";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 // Sample gallery data
 const galleryImages = [
@@ -81,28 +81,31 @@ const galleryImages = [
     alt: "Classical Dance Performance 12",
     title: "Stage Performance",
   },
-]
+];
 
 export default function GalleryPageClient() {
-  const [selectedImage, setSelectedImage] = useState<number | null>(null)
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
-  const openLightbox = (id: number) => setSelectedImage(id)
-  const closeLightbox = () => setSelectedImage(null)
+  const openLightbox = (id: number) => setSelectedImage(id);
+  const closeLightbox = () => setSelectedImage(null);
 
   const navigateImage = (direction: "next" | "prev") => {
-    if (selectedImage === null) return
+    if (selectedImage === null) return;
 
-    const currentIndex = galleryImages.findIndex((img) => img.id === selectedImage)
-    let newIndex
+    const currentIndex = galleryImages.findIndex(
+      (img) => img.id === selectedImage,
+    );
+    let newIndex;
 
     if (direction === "next") {
-      newIndex = (currentIndex + 1) % galleryImages.length
+      newIndex = (currentIndex + 1) % galleryImages.length;
     } else {
-      newIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length
+      newIndex =
+        (currentIndex - 1 + galleryImages.length) % galleryImages.length;
     }
 
-    setSelectedImage(galleryImages[newIndex].id)
-  }
+    setSelectedImage(galleryImages[newIndex].id);
+  };
 
   return (
     <main className="min-h-screen pt-20">
@@ -117,9 +120,12 @@ export default function GalleryPageClient() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h1 className="text-4xl md:text-5xl font-serif font-bold mb-6">Gallery</h1>
+            <h1 className="text-4xl md:text-5xl font-serif font-bold mb-6">
+              Gallery
+            </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              A visual journey through performances, rehearsals, and moments captured in time.
+              A visual journey through performances, rehearsals, and moments
+              captured in time.
             </p>
           </motion.div>
 
@@ -143,7 +149,9 @@ export default function GalleryPageClient() {
                 <div className="overflow-hidden rounded-lg shadow-md">
                   <div className="relative aspect-[3/4] group">
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
-                      <h3 className="text-white font-serif font-medium text-lg">{image.title}</h3>
+                      <h3 className="text-white font-serif font-medium text-lg">
+                        {image.title}
+                      </h3>
                     </div>
                     <Image
                       src={image.src || "/placeholder.svg"}
@@ -180,8 +188,13 @@ export default function GalleryPageClient() {
               {galleryImages.find((img) => img.id === selectedImage) && (
                 <div className="relative w-full h-full">
                   <Image
-                    src={galleryImages.find((img) => img.id === selectedImage)!.src || "/placeholder.svg"}
-                    alt={galleryImages.find((img) => img.id === selectedImage)!.alt}
+                    src={
+                      galleryImages.find((img) => img.id === selectedImage)!
+                        .src || "/placeholder.svg"
+                    }
+                    alt={
+                      galleryImages.find((img) => img.id === selectedImage)!.alt
+                    }
                     fill
                     className="object-contain"
                   />
@@ -225,6 +238,5 @@ export default function GalleryPageClient() {
         )}
       </AnimatePresence>
     </main>
-  )
+  );
 }
-

@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { SiteHeader } from "@/components/site-header"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { Card, CardContent } from "@/components/ui/card"
-import { Mail, Phone, MapPin } from "lucide-react"
-import { contacts } from "@/constants/constants"
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { SiteHeader } from "@/components/site-header";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent } from "@/components/ui/card";
+import { Mail, Phone, MapPin } from "lucide-react";
+import { contacts } from "@/constants/constants";
 
 export default function ContactPageClient() {
   const [formState, setFormState] = useState({
@@ -19,41 +19,45 @@ export default function ContactPageClient() {
     email: "",
     subject: "",
     message: "",
-  })
+  });
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSuccess, setIsSuccess] = useState(false)
-  const [errorMessage, setErrorMessage] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     setFormState({
       ...formState,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setErrorMessage("")
+    e.preventDefault();
+    setIsSubmitting(true);
+    setErrorMessage("");
 
     // Simulate form submission
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-      setIsSuccess(true)
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      setIsSuccess(true);
       setFormState({
         name: "",
         email: "",
         subject: "",
         message: "",
-      })
+      });
     } catch (error) {
       console.log(error);
-      setErrorMessage("There was an error submitting your message. Please try again.")
+      setErrorMessage(
+        "There was an error submitting your message. Please try again.",
+      );
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   return (
     <main className="min-h-screen pt-20">
@@ -68,9 +72,12 @@ export default function ContactPageClient() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h1 className="text-4xl md:text-5xl font-serif font-bold mb-6">Contact</h1>
+            <h1 className="text-4xl md:text-5xl font-serif font-bold mb-6">
+              Contact
+            </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Get in touch for performances, workshops, collaborations, or general inquiries.
+              Get in touch for performances, workshops, collaborations, or
+              general inquiries.
             </p>
           </motion.div>
 
@@ -83,7 +90,9 @@ export default function ContactPageClient() {
             >
               <Card>
                 <CardContent className="p-6">
-                  <h2 className="text-2xl font-serif font-bold mb-6 text-[#D2AC58]">Send a Message</h2>
+                  <h2 className="text-2xl font-serif font-bold mb-6 text-[#D2AC58]">
+                    Send a Message
+                  </h2>
 
                   {isSuccess ? (
                     <motion.div
@@ -91,12 +100,15 @@ export default function ContactPageClient() {
                       animate={{ opacity: 1, y: 0 }}
                       className="bg-primary/10 text-primary rounded-md mb-6"
                     >
-                      Thank you for your message! I&apos;ll get back to you as soon as possible.
+                      Thank you for your message! I&apos;ll get back to you as
+                      soon as possible.
                     </motion.div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-4">
                       {errorMessage && (
-                        <div className="bg-destructive/10 text-destructive p-4 rounded-md mb-6">{errorMessage}</div>
+                        <div className="bg-destructive/10 text-destructive p-4 rounded-md mb-6">
+                          {errorMessage}
+                        </div>
                       )}
 
                       <div className="space-y-2">
@@ -149,7 +161,11 @@ export default function ContactPageClient() {
                         />
                       </div>
 
-                      <Button type="submit" className="w-full btn-elegant-filled" disabled={isSubmitting}>
+                      <Button
+                        type="submit"
+                        className="w-full btn-elegant-filled"
+                        disabled={isSubmitting}
+                      >
                         {isSubmitting ? "Sending..." : "Send Message"}
                       </Button>
                     </form>
@@ -166,7 +182,9 @@ export default function ContactPageClient() {
               className="space-y-8"
             >
               <div>
-                <h2 className="text-2xl font-serif font-bold mb-6">Contact Information</h2>
+                <h2 className="text-2xl font-serif font-bold mb-6">
+                  Contact Information
+                </h2>
                 <div className="space-y-4">
                   <div className="flex items-start space-x-4">
                     <div className="bg-primary/10 p-3 rounded-full">
@@ -194,15 +212,21 @@ export default function ContactPageClient() {
                     </div>
                     <div>
                       <h3 className="font-medium mb-1">Location</h3>
-                      <p className="text-muted-foreground">{contacts.location}</p>
-                      <p className="text-muted-foreground">(Available for inter-state performances)</p>
+                      <p className="text-muted-foreground">
+                        {contacts.location}
+                      </p>
+                      <p className="text-muted-foreground">
+                        (Available for inter-state performances)
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div>
-                <h2 className="text-2xl font-serif font-bold mb-6">Connect on Social Media</h2>
+                <h2 className="text-2xl font-serif font-bold mb-6">
+                  Connect on Social Media
+                </h2>
                 <div className="grid grid-cols-2 gap-4">
                   <a
                     href={contacts.instagram}
@@ -225,10 +249,13 @@ export default function ContactPageClient() {
               </div>
 
               <div className="bg-muted p-6 rounded-lg">
-                <h3 className="font-serif font-semibold text-lg mb-3">Response Time</h3>
+                <h3 className="font-serif font-semibold text-lg mb-3">
+                  Response Time
+                </h3>
                 <p className="text-muted-foreground">
-                  I typically respond to inquiries within 24-48 hours. For urgent matters related to bookings or
-                  performances, please mention Urgent in your subject line.
+                  I typically respond to inquiries within 24-48 hours. For
+                  urgent matters related to bookings or performances, please
+                  mention Urgent in your subject line.
                 </p>
               </div>
             </motion.div>
@@ -236,6 +263,5 @@ export default function ContactPageClient() {
         </div>
       </section>
     </main>
-  )
+  );
 }
-

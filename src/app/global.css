@@ -2,8 +2,8 @@
 @tailwind utilities;
 
 :root {
-  --color-primary: #D2AC58;
-  --color-primary-dark: #9D7931;
+  --color-primary: #d2ac58;
+  --color-primary-dark: #9d7931;
   --color-primary-light: #ffd700;
   --color-background: #ffffff;
   --color-foreground: #121212;
@@ -15,8 +15,8 @@
 }
 
 .dark {
-  --color-primary: #D2AC58;
-  --color-primary-dark: #9D7931;
+  --color-primary: #d2ac58;
+  --color-primary-dark: #9d7931;
   --color-primary-light: #ffd700;
   --color-background: #121212;
   --color-foreground: #f8f8f8;
@@ -75,13 +75,21 @@
   .fade-to-right {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, transparent, var(--color-background) 100%);
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--color-background) 100%
+    );
   }
 
   .fade-to-bottom {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, transparent, var(--color-background) 100%);
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      var(--color-background) 100%
+    );
   }
 
   .text-gold {

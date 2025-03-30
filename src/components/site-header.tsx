@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { motion, AnimatePresence } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
-import { usePathname } from "next/navigation"
-import { ThemeToggle } from "@/components/theme-toggle"
-import Image from "next/image"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { ThemeToggle } from "@/components/theme-toggle";
+import Image from "next/image";
 
 const navItems = [
   { name: "Home", path: "/" },
@@ -18,37 +18,43 @@ const navItems = [
   { name: "Videos", path: "/videos" },
   { name: "Contact", path: "/contact" },
   { name: "Bookings", path: "/bookings" },
-]
+];
 
 export function SiteHeader() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const pathname = usePathname()
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
-        setIsScrolled(true)
+        setIsScrolled(true);
       } else {
-        setIsScrolled(false)
+        setIsScrolled(false);
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? "bg-background/90 backdrop-blur-md shadow-sm py-2" : "bg-transparent py-4"
+        isScrolled
+          ? "bg-background/90 backdrop-blur-md shadow-sm py-2"
+          : "bg-transparent py-4"
       }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             <Link href="/" className="flex items-center gap-2">
-            <Image src={"logo.png"} alt={"logo"} height={64} width={64}/>
+              <Image src={"logo.png"} alt={"logo"} height={64} width={64} />
               {/* <span className="text-xl font-bold text-gold">Kumari Prasanna</span> */}
             </Link>
           </motion.div>
@@ -65,7 +71,9 @@ export function SiteHeader() {
                 <Link
                   href={item.path}
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-colors relative ${
-                    pathname === item.path ? "text-gold" : "text-foreground/70 hover:text-foreground"
+                    pathname === item.path
+                      ? "text-gold"
+                      : "text-foreground/70 hover:text-foreground"
                   }`}
                 >
                   {item.name}
@@ -97,8 +105,16 @@ export function SiteHeader() {
             transition={{ duration: 0.5 }}
             className="md:hidden"
           >
-            <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </Button>
           </motion.div>
         </div>
@@ -126,7 +142,9 @@ export function SiteHeader() {
                     <Link
                       href={item.path}
                       className={`px-4 py-2 block rounded-md text-sm font-medium ${
-                        pathname === item.path ? "bg-gold/10 text-gold" : "text-foreground/70 hover:bg-muted"
+                        pathname === item.path
+                          ? "bg-gold/10 text-gold"
+                          : "text-foreground/70 hover:bg-muted"
                       }`}
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
@@ -148,5 +166,5 @@ export function SiteHeader() {
         )}
       </AnimatePresence>
     </header>
-  )
+  );
 }
