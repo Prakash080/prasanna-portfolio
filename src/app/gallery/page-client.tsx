@@ -1,138 +1,149 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
-import Header from "@/components/header";
+import { useState } from "react"
+import Image from "next/image"
+import { motion, AnimatePresence } from "framer-motion"
+import { SiteHeader } from "@/components/site-header"
+import { Button } from "@/components/ui/button"
+import { ChevronLeft, ChevronRight, X } from "lucide-react"
 
 // Sample gallery data
 const galleryImages = [
   {
     id: 1,
-    src: "assets/western/001.jpg",
-    alt: "Gallery Image 1",
-    title: "Summer Memories",
+    src: "/placeholder.svg?height=800&width=600&text=Gallery+1",
+    alt: "Classical Dance Performance 1",
+    title: "Bharatanatyam Solo",
   },
   {
     id: 2,
-    src: "assets/saree/002.JPG",
-    alt: "Gallery Image 2",
-    title: "Winter Wonderland",
+    src: "/placeholder.svg?height=800&width=600&text=Gallery+2",
+    alt: "Classical Dance Performance 2",
+    title: "Kathak Expressions",
   },
   {
     id: 3,
-    src: "assets/classical/027.JPG",
-    alt: "Gallery Image 3",
-    title: "Spring Blossoms",
+    src: "/placeholder.svg?height=800&width=600&text=Gallery+3",
+    alt: "Classical Dance Performance 3",
+    title: "Odissi Movements",
   },
   {
     id: 4,
-    src: "assets/classical/004.JPG",
-    alt: "Gallery Image 4",
-    title: "Autumn Leaves",
+    src: "/placeholder.svg?height=800&width=600&text=Gallery+4",
+    alt: "Classical Dance Performance 4",
+    title: "Festival Performance",
   },
   {
     id: 5,
-    src: "assets/ncc/001.jpg",
-    alt: "Gallery Image 5",
-    title: "Beach Day",
+    src: "/placeholder.svg?height=800&width=600&text=Gallery+5",
+    alt: "Classical Dance Performance 5",
+    title: "International Tour",
   },
   {
     id: 6,
-    src: "assets/classical/005.JPG",
-    alt: "Gallery Image 6",
-    title: "Mountain Hike",
+    src: "/placeholder.svg?height=800&width=600&text=Gallery+6",
+    alt: "Classical Dance Performance 6",
+    title: "Workshop Session",
   },
   {
     id: 7,
-    src: "assets/saree/019.jpg",
-    alt: "Gallery Image 7",
-    title: "City Lights",
+    src: "/placeholder.svg?height=800&width=600&text=Gallery+7",
+    alt: "Classical Dance Performance 7",
+    title: "Costume Detail",
   },
   {
     id: 8,
-    src: "assets/western/015.jpg",
-    alt: "Gallery Image 8",
-    title: "Countryside",
+    src: "/placeholder.svg?height=800&width=600&text=Gallery+8",
+    alt: "Classical Dance Performance 8",
+    title: "Backstage Moments",
   },
   {
     id: 9,
-    src: "assets/ncc/002.jpg",
-    alt: "Gallery Image 9",
-    title: "Sunset Views",
+    src: "/placeholder.svg?height=800&width=600&text=Gallery+9",
+    alt: "Classical Dance Performance 9",
+    title: "Dance Academy",
   },
-];
+  {
+    id: 10,
+    src: "/placeholder.svg?height=800&width=600&text=Gallery+10",
+    alt: "Classical Dance Performance 10",
+    title: "Cultural Exchange",
+  },
+  {
+    id: 11,
+    src: "/placeholder.svg?height=800&width=600&text=Gallery+11",
+    alt: "Classical Dance Performance 11",
+    title: "Rehearsal",
+  },
+  {
+    id: 12,
+    src: "/placeholder.svg?height=800&width=600&text=Gallery+12",
+    alt: "Classical Dance Performance 12",
+    title: "Stage Performance",
+  },
+]
 
 export default function GalleryPageClient() {
-  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [selectedImage, setSelectedImage] = useState<number | null>(null)
 
-  const openLightbox = (id: number) => setSelectedImage(id);
-  const closeLightbox = () => setSelectedImage(null);
+  const openLightbox = (id: number) => setSelectedImage(id)
+  const closeLightbox = () => setSelectedImage(null)
 
   const navigateImage = (direction: "next" | "prev") => {
-    if (selectedImage === null) return;
+    if (selectedImage === null) return
 
-    const currentIndex = galleryImages.findIndex(
-      (img) => img.id === selectedImage
-    );
-    let newIndex;
+    const currentIndex = galleryImages.findIndex((img) => img.id === selectedImage)
+    let newIndex
 
     if (direction === "next") {
-      newIndex = (currentIndex + 1) % galleryImages.length;
+      newIndex = (currentIndex + 1) % galleryImages.length
     } else {
-      newIndex =
-        (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      newIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length
     }
 
-    setSelectedImage(galleryImages[newIndex].id);
-  };
+    setSelectedImage(galleryImages[newIndex].id)
+  }
 
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
+    <main className="min-h-screen pt-20">
+      <SiteHeader />
 
-      <main className="container px-4 py-12 mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h1 className="text-4xl font-bold mb-4">Photo Gallery</h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Browse through our collection of beautiful memories captured over
-            time.
-          </p>
-        </motion.div>
+      {/* Gallery Section */}
+      <section className="py-20">
+        <div className="container px-4 mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h1 className="text-4xl md:text-5xl font-serif font-bold mb-6">Gallery</h1>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              A visual journey through performances, rehearsals, and moments captured in time.
+            </p>
+          </motion.div>
 
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: false }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-        >
-          {galleryImages.map((image, index) => (
-            <motion.div
-              key={image.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
-              transition={{ delay: 0.1 * index, duration: 0.5 }}
-              whileHover={{ y: -10, transition: { duration: 0.3 } }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Card
-                className="overflow-hidden cursor-pointer"
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+          >
+            {galleryImages.map((image, index) => (
+              <motion.div
+                key={image.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 * index, duration: 0.5 }}
+                whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                whileTap={{ scale: 0.95 }}
+                className="cursor-pointer"
                 onClick={() => openLightbox(image.id)}
               >
-                <CardContent className="p-0 relative">
-                  <div className="aspect-square relative group">
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10 flex items-end justify-center pb-4">
-                      <h3 className="text-white font-medium">{image.title}</h3>
+                <div className="overflow-hidden rounded-lg shadow-md">
+                  <div className="relative aspect-[3/4] group">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+                      <h3 className="text-white font-serif font-medium text-lg">{image.title}</h3>
                     </div>
                     <Image
                       src={image.src || "/placeholder.svg"}
@@ -141,12 +152,12 @@ export default function GalleryPageClient() {
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                   </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
-      </main>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
 
       {/* Lightbox */}
       <AnimatePresence>
@@ -169,13 +180,8 @@ export default function GalleryPageClient() {
               {galleryImages.find((img) => img.id === selectedImage) && (
                 <div className="relative w-full h-full">
                   <Image
-                    src={
-                      galleryImages.find((img) => img.id === selectedImage)!
-                        .src || "/placeholder.svg"
-                    }
-                    alt={
-                      galleryImages.find((img) => img.id === selectedImage)!.alt
-                    }
+                    src={galleryImages.find((img) => img.id === selectedImage)!.src || "/placeholder.svg"}
+                    alt={galleryImages.find((img) => img.id === selectedImage)!.alt}
                     fill
                     className="object-contain"
                   />
@@ -210,7 +216,7 @@ export default function GalleryPageClient() {
               </Button>
 
               <div className="absolute bottom-4 left-0 right-0 text-center text-white">
-                <h3 className="text-xl font-medium">
+                <h3 className="text-xl font-serif font-medium">
                   {galleryImages.find((img) => img.id === selectedImage)?.title}
                 </h3>
               </div>
@@ -218,6 +224,7 @@ export default function GalleryPageClient() {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
-  );
+    </main>
+  )
 }
+

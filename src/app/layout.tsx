@@ -1,49 +1,45 @@
-import { Space_Grotesk } from "next/font/google";
-import "./global.css";
-import { ThemeProvider } from "@/components/theme-provider";
+import type React from "react"
+import type { Metadata } from "next"
+import { Playfair_Display, Montserrat } from "next/font/google"
+import "./global.css"
+import { ThemeProvider } from "@/components/theme-provider"
+import { SiteFooter } from "@/components/site-footer"
 
-const font = Space_Grotesk({
-  variable: "--font-geist-mono",
+const playfair = Playfair_Display({
   subsets: ["latin"],
-});
+  variable: "--font-playfair",
+})
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+})
+
+export const metadata: Metadata = {
+  title: "Natya - Classical Dance Portfolio",
+  description: "Showcasing the art of classical dance through performances, workshops, and more",
+  keywords: ["classical dance", "bharatanatyam", "kathak", "odissi", "dance portfolio", "performer"],
+  authors: [{ name: "Natya" }],
+  creator: "Natya",
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Inject theme detection script before React hydrates */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                const storedTheme = localStorage.getItem("theme");
-                const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-                const theme = storedTheme || (systemDark ? "dark" : "light");
-                if (theme === "dark") {
-                  document.documentElement.classList.add("dark");
-                }
-              })();
-            `,
-          }}
-        />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body
-        className={`${font.variable} antialiased`}
-        cz-shortcut-listen="true"
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+      <body className={`${playfair.variable} ${montserrat.variable} font-sans`}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           {children}
+          <SiteFooter />
         </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }
+
