@@ -1,4 +1,7 @@
 //contact Details
+
+import { imagesSrc } from "./assets";
+
 // This file contains the contact details of the artist, including name, mobile number, email, location, and social media links.
 const contacts = {
   name: "Kumari Prasanna",
@@ -14,29 +17,29 @@ const awards = [
   {
     id: 1,
     title: "Bala Saraswati Award",
-    organization: "Ministry of Culture",
+    organization: "Saraswathi Nrithyalaya International Academy",
     year: "2019/20",
     description:
-      "Awarded for outstanding contribution to the preservation and promotion of classical dance forms.",
-    image: "assets/classical/005.jpg",
+      "Celebrating excellence in Bharatanatyam and unwavering dedication to the art form.",
+    image: 'award-image.png',
   },
   {
     id: 2,
     title: "Natya Varshini Award",
-    organization: "International Dance Foundation",
+    organization: "Saraswathi Nrithyalaya International Academy",
     year: "2021/22",
     description:
-      "Recognized for innovative choreography that blends traditional techniques with contemporary themes.",
-    image: "assets/classical/018.jpg",
+      "Recognizing artistic mastery and contributions to classical dance.",
+    image: 'award-image.png',
   },
   {
     id: 3,
     title: "National Talent Best Dancer Award",
-    organization: "Asian Dance Festival",
+    organization: "Saraswathi Nrithyalaya International Academy",
     year: "2018",
     description:
-      "Honored for exceptional solo performance showcasing technical precision and emotional depth.",
-    image: "assets/classical/024.jpg",
+      "Awarded for outstanding skill and stage presence, this national recognition highlights exceptional talent and contributions to the field of classical dance.",
+    image: 'award-image.png',
   },
 ];
 
@@ -77,53 +80,81 @@ const certificates = [
   {
     id: 1,
     title: "Divya Chetana Charitable Trust",
-    organization: "Asian Dance Festival",
+    organization: "Saraswathi Nrithyalaya International Academy",
     year: "2021",
-    image: "assets/classical/024.jpg",
+    image: 'certificate-image.png',
   },
   {
     id: 2,
     title: "Mahila Samskruthika Utsava",
-    organization: "Asian Dance Festival",
+    organization: "Saraswathi Nrithyalaya International Academy",
     year: "2020/2021",
-    image: "assets/classical/024.jpg",
+    image: 'certificate-image.png',
   },
   {
     id: 3,
     title: "Sri Sathya Sai Samskruthi & Social Center",
-    organization: "Asian Dance Festival",
+    organization: "Saraswathi Nrithyalaya International Academy",
     year: "(2016/17, 2019",
     description:
       "Honored for exceptional solo performance showcasing technical precision and emotional depth.",
-    image: "assets/classical/024.jpg",
+    image: 'certificate-image.png',
   },
   {
     id: 4,
     title: "Bangalore International Airport Limited",
-    organization: "Asian Dance Festival",
+    organization: "Saraswathi Nrithyalaya International Academy",
     year: "2016",
     description:
       "Honored for exceptional solo performance showcasing technical precision and emotional depth.",
-    image: "assets/classical/024.jpg",
+    image: 'certificate-image.png',
   },
   {
     id: 5,
     title: "Navarathri Utsava",
-    organization: "Asian Dance Festival",
+    organization: "Saraswathi Nrithyalaya International Academy",
     year: "2016 – 2021",
     description:
       "Honored for exceptional solo performance showcasing technical precision and emotional depth.",
-    image: "assets/classical/024.jpg",
+    image: 'certificate-image.png',
   },
   {
     id: 6,
     title: "Sri Chamundeshwari Temple",
-    organization: "Asian Dance Festival",
+    organization: "Saraswathi Nrithyalaya International Academy",
     year: "2021",
     description:
       "Honored for exceptional solo performance showcasing technical precision and emotional depth.",
-    image: "assets/classical/024.jpg",
+    image: 'certificate-image.png',
   },
 ];
 
-export { awards, pressQuotes, certificates, contacts };
+// Data for Gallery Images
+const excludedIndexes = new Set([
+  0, 1, 2, 3, 4, 5, 6, 10, 12, 19, 22, 24, 30, 31, 36,38, 39, 40, 48, 54, 55, 56, 57
+]);
+
+// Define the type for gallery images
+interface GalleryImage {
+  id: number;
+  src: string;
+  alt: string;
+  title: string;
+}
+
+const galleryImages: GalleryImage[] = [];
+let count = 1;
+
+for (let i = 0; i < 58; i++) {
+  if (!excludedIndexes.has(i)) {
+    galleryImages.push({
+      id: count,
+      src: imagesSrc[i],
+      alt: `Classical Dance ${count}`,
+      title: `Gallery Image ${count}`,
+    });
+    count++;
+  }
+}
+
+export { awards, pressQuotes, certificates, contacts,galleryImages };

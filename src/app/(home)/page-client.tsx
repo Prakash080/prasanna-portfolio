@@ -6,8 +6,35 @@ import Link from "next/link";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
-import { ChevronRight, Calendar, MapPin, Award, Play } from "lucide-react";
+import { ChevronRight, Calendar, MapPin, Award } from "lucide-react";
 import { awards } from "@/constants/constants";
+import { imagesSrc } from "@/constants/assets";
+import { FeaturedVideo } from "@/components/featured-video";
+
+// Featured videos data
+const featuredVideos = [
+  {
+    id: 301,
+    title: "Featured Video 01",
+    src: imagesSrc[48],
+    date: "January 15, 2023",
+    location: "Rajanukunte, Bangalore",
+  },
+  {
+    id: 302,
+    title: "Featured Video 02",
+    src: imagesSrc[30],
+    date: "January 15, 2023",
+    location: "Singanayakanahalli, Bangalore",
+  },
+  {
+    id: 303,
+    title: "Featured Video 03",
+    src: imagesSrc[5],
+    date: "January 15, 2023",
+    location: "Malleshwaram, Bangalore",
+  },
+];
 
 export default function HomePageClient() {
   const ref = useRef(null);
@@ -59,7 +86,7 @@ export default function HomePageClient() {
               className="relative h-[500px] md:h-[70vh] rounded-lg overflow-hidden"
             >
               <Image
-                src="assets/classical/023.jpg"
+                src={imagesSrc[22]}
                 alt="Classical Dance Performance"
                 fill
                 className="object-cover"
@@ -78,26 +105,26 @@ export default function HomePageClient() {
             >
               <motion.h1
                 variants={itemVariants}
-                className="text-5xl md:text-7xl font-serif font-bold mb-6"
+                className="text-4xl md:text-5xl font-serif font-bold mb-6 flex flex-col"
               >
-                The Art of <span className="text-gold">Classical Dance</span>
+                The Journey of <span className="text-gold">K. Prasanna</span>
               </motion.h1>
 
               <motion.p
                 variants={itemVariants}
                 className="text-lg md:text-xl mb-8"
               >
-                Expressing emotions through movement, rhythm, and storytelling
-                in the ancient tradition of classical dance.
+                Experience the grace of Bharatanatyam with Kumari Prasanna—where
+                tradition meets artistry. Explore performances, achievements,
+                and a lifelong passion for dance.{" "}
               </motion.p>
-
               <motion.div
                 variants={itemVariants}
                 className="flex flex-col sm:flex-row gap-4"
               >
                 <Link href="/performances">
                   <Button className="btn-elegant-filled">
-                    Upcoming Performances
+                    Watch Performances
                     <ChevronRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
@@ -145,7 +172,7 @@ export default function HomePageClient() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-3xl md:text-4xl font-serif font-bold"
               >
-                About the Dancer
+                About Kumari Prasanna
               </motion.h2>
 
               <motion.p
@@ -155,10 +182,17 @@ export default function HomePageClient() {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="text-muted-foreground"
               >
-                With over 15 years of training in classical dance forms, I bring
-                stories to life through movement and expression. My performances
-                blend traditional techniques with contemporary interpretations,
-                creating a unique experience for audiences.
+                Kumari Prasanna is a dedicated classical dancer with expertise
+                in the <span className="font-bold">Thanjavur style</span> of
+                Bharatanatyam and the{" "}
+                <span className="font-bold">Radhakalpa Method</span>. With over
+                eight years of training at Saraswathi Nrithyalaya International
+                Academy, Prasanna has honed a deep understanding of movement,
+                rhythm, and expression. Beyond Bharatanatyam, Prasanna explores
+                semi-classical, Sangeetha, yoga practices, and Western dance
+                styles, bringing versatility to performances. As the founder of
+                Kaladwaraka Academy, Prasanna nurtures the next generation of
+                artists, blending tradition with modern innovation.
               </motion.p>
 
               <motion.p
@@ -168,9 +202,9 @@ export default function HomePageClient() {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="text-muted-foreground"
               >
-                I have performed at prestigious venues across the country and
-                internationally, sharing the rich cultural heritage of classical
-                dance with diverse audiences.
+                She has performed at prestigious venues across the state and
+                nation, showcasing the rich cultural heritage of classical dance
+                to diverse audiences.
               </motion.p>
 
               <motion.div
@@ -201,7 +235,7 @@ export default function HomePageClient() {
                 className="relative h-[500px] rounded-lg overflow-hidden shadow-lg"
               >
                 <Image
-                  src="assets/classical/012.jpg"
+                  src={imagesSrc[11]}
                   alt="Classical Dancer Portrait"
                   fill
                   className="object-cover"
@@ -211,6 +245,9 @@ export default function HomePageClient() {
           </div>
         </div>
       </section>
+
+      {/* Featured Videos Section */}
+      <FeaturedVideo />
 
       {/* Featured Performances with enhanced animations */}
       <section className="py-20 bg-muted">
@@ -232,13 +269,9 @@ export default function HomePageClient() {
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              "assets/classical/006.JPG",
-              "assets/classical/018.jpg",
-              "assets/classical/003.jpg",
-            ].map((item, index) => (
+            {featuredVideos.map((item, index) => (
               <motion.div
-                key={item}
+                key={item.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, amount: 0.3 }}
@@ -249,54 +282,24 @@ export default function HomePageClient() {
                 <div className="bg-card rounded-lg overflow-hidden shadow-md h-full">
                   <div className="relative h-[250px]">
                     <Image
-                      src={item}
+                      src={item.src}
                       alt={`Performance ${index}`}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="text-white border-white hover:bg-white/20"
-                      >
-                        <Play className="h-4 w-4 mr-2" /> Watch Teaser
-                      </Button>
-                    </div>
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-serif font-semibold mb-2">
-                      {index === 0
-                        ? "Rhythm of the Soul"
-                        : index === 1
-                          ? "Tales of Ancient India"
-                          : "Modern Interpretations"}
+                      {item.title}
                     </h3>
                     <div className="flex items-center text-muted-foreground mb-3">
                       <Calendar className="h-4 w-4 mr-2 text-gold" />
-                      <span className="text-sm">
-                        {index === 0
-                          ? "June 15, 2023"
-                          : index === 1
-                            ? "August 22, 2023"
-                            : "October 5, 2023"}
-                      </span>
+                      <span className="text-sm">{item.date}</span>
                     </div>
                     <div className="flex items-center text-muted-foreground mb-4">
                       <MapPin className="h-4 w-4 mr-2 text-gold" />
-                      <span className="text-sm">
-                        {index === 0
-                          ? "National Theatre, New Delhi"
-                          : index === 1
-                            ? "Cultural Center, Mumbai"
-                            : "International Arts Festival, Bangalore"}
-                      </span>
+                      <span className="text-sm">{item.location}</span>
                     </div>
-                    <Link href="/performances">
-                      <Button variant="link" className="p-0 h-auto text-gold">
-                        Learn more <ChevronRight className="h-4 w-4 ml-1" />
-                      </Button>
-                    </Link>
                   </div>
                 </div>
               </motion.div>
@@ -403,38 +406,33 @@ export default function HomePageClient() {
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              "assets/classical/016.jpg",
-              "assets/classical/019.jpg",
-              "assets/classical/013.jpg",
-              "assets/classical/023.jpg",
-            ].map((item, index) => (
-              <motion.div
-                key={item}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: false, amount: 0.3 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{
-                  y: -5,
-                  scale: 1.03,
-                  transition: { duration: 0.3 },
-                }}
-                className="group"
-              >
-                <div className="relative aspect-square rounded-lg overflow-hidden shadow-md">
-                  <Image
-                    src={item}
-                    alt={`Gallery Image ${index}`}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
-                    <p className="text-white font-medium">View Image</p>
+            {[imagesSrc[4], imagesSrc[19], imagesSrc[2], imagesSrc[24]].map(
+              (item, index) => (
+                <motion.div
+                  key={item}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{
+                    y: -5,
+                    scale: 1.03,
+                    transition: { duration: 0.3 },
+                  }}
+                  className="group"
+                >
+                  <div className="relative aspect-square rounded-lg overflow-hidden shadow-md">
+                    <Image
+                      src={item}
+                      alt={`Gallery Image ${index}`}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4"></div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ),
+            )}
           </div>
 
           <motion.div

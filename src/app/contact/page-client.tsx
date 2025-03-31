@@ -12,6 +12,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { contacts } from "@/constants/constants";
+import Image from "next/image";
 
 export default function ContactPageClient() {
   const [formState, setFormState] = useState({
@@ -227,23 +228,23 @@ export default function ContactPageClient() {
                 <h2 className="text-2xl font-serif font-bold mb-6">
                   Connect on Social Media
                 </h2>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1">
                   <a
                     href={contacts.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center space-x-3 p-4 bg-card rounded-lg hover:bg-muted transition-colors"
+                    className="flex items-center space-x-3 p-1 bg-card rounded-lg hover:bg-muted transition-colors"
                   >
-                    <span>Instagram</span>
+                    Instagram<Image src={"instagram.svg"} alt={"instagram"} width={32} height={32} className="ml-1"/>
                   </a>
 
                   <a
                     href={contacts.whatsapp}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center space-x-3 p-4 bg-card rounded-lg hover:bg-muted transition-colors"
+                    className="flex items-center space-x-3 p-1 bg-card rounded-lg hover:bg-muted transition-colors"
                   >
-                    <span>Whatapp</span>
+                    Whatsapp<Image src={"whatsapp.svg"} alt={"whatsapp"} width={24} height={24} className="ml-2"/>
                   </a>
                 </div>
               </div>

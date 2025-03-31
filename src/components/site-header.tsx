@@ -9,13 +9,13 @@ import { usePathname } from "next/navigation";
 import { ThemeToggle } from "@/components/theme-toggle";
 import Image from "next/image";
 
+// Updated navItems to remove the separate Videos link
 const navItems = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
   { name: "Performances", path: "/performances" },
   { name: "Awards", path: "/awards" },
   { name: "Gallery", path: "/gallery" },
-  { name: "Videos", path: "/videos" },
   { name: "Contact", path: "/contact" },
   { name: "Bookings", path: "/bookings" },
 ];
@@ -40,10 +40,8 @@ export function SiteHeader() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? "bg-background/90 backdrop-blur-md shadow-sm py-2"
-          : "bg-transparent py-4"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 backdrop-blur-md ${
+        isScrolled ? "bg-background/90 shadow-sm py-2" : "bg-transparent py-4"
       }`}
     >
       <div className="container mx-auto px-4">

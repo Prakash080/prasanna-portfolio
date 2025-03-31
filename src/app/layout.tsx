@@ -4,6 +4,7 @@ import { Playfair_Display, Montserrat } from "next/font/google";
 import "./global.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteFooter } from "@/components/site-footer";
+import { BackgroundImage } from "@/components/background-image";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -43,6 +44,7 @@ export default function RootLayout({
       </head>
       <body className={`${playfair.variable} ${montserrat.variable} font-sans`}>
         <ThemeProvider defaultTheme="dark" enableSystem>
+          <BackgroundImage />
           {children}
           <SiteFooter />
         </ThemeProvider>

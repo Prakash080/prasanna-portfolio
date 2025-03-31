@@ -80,14 +80,6 @@ export function SiteFooter() {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/videos"
-                  className="text-muted-foreground hover:text-gold transition-colors"
-                >
-                  Videos
-                </Link>
-              </li>
-              <li>
-                <Link
                   href="/awards"
                   className="text-muted-foreground hover:text-gold transition-colors"
                 >
@@ -128,7 +120,7 @@ export function SiteFooter() {
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-gold transition-colors"
               >
-                Instagram
+                Instagram<Image src={"instagram.svg"} alt={"instagram"} width={32} height={32}/>
               </Link>
               <Link
                 href={contacts.whatsapp}
@@ -136,7 +128,7 @@ export function SiteFooter() {
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-gold transition-colors"
               >
-                Whatsapp
+                Whatsapp<Image src={"whatsapp.svg"} alt={"whatsapp"} width={24} height={24} className="mt-1"/>
               </Link>
             </div>
             <div className="space-y-2">

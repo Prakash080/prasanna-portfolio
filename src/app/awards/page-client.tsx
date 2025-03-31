@@ -61,10 +61,10 @@ export default function AwardsPageClient() {
                           <div className="p-6 flex flex-col">
                             <div className="flex items-start gap-4 mb-4">
                               <div className="bg-primary/10 p-2 rounded-full">
-                                <Award className="h-5 w-5 text-primary" />
+                                <Award className="h-5 w-5 text-gold" />
                               </div>
                               <div>
-                                <h3 className="font-serif font-semibold text-xl">
+                                <h3 className="font-serif font-semibold text-xl text-gold">
                                   {award.title}
                                 </h3>
                                 <p className="text-muted-foreground text-sm">
@@ -76,7 +76,7 @@ export default function AwardsPageClient() {
                               {award.description}
                             </p>
                             <div className="flex items-center text-muted-foreground text-sm">
-                              <Calendar className="h-4 w-4 mr-2" />
+                              <Calendar className="h-4 w-4 mr-2 text-gold" />
                               <span>{award.year}</span>
                             </div>
                           </div>
@@ -149,14 +149,14 @@ export default function AwardsPageClient() {
                       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-transparent md:hidden"></div>
                     </div>
                     <div className="p-4">
-                      <h3 className="font-serif font-semibold text-lg mb-2">
+                      <h3 className="font-serif font-semibold text-lg mb-2 text-gold">
                         {item.title}
                       </h3>
                       <p className="text-muted-foreground text-sm mb-2">
                         {item.organization}
                       </p>
                       <div className="flex items-center text-muted-foreground text-sm">
-                        <Calendar className="h-4 w-4 mr-2" />
+                        <Calendar className="h-4 w-4 mr-2 text-gold" />
                         <span>{item.year}</span>
                       </div>
                     </div>
