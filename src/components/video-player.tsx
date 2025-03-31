@@ -1,17 +1,24 @@
-"use client"
+"use client";
 
-import { useState, useRef, useEffect } from "react"
-import { motion } from "framer-motion"
-import { Play, Pause, Volume2, VolumeX, Maximize, Minimize } from "lucide-react"
+import { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
+import {
+  Play,
+  Pause,
+  Volume2,
+  VolumeX,
+  Maximize,
+  Minimize,
+} from "lucide-react";
 
 interface VideoPlayerProps {
-  src: string
-  poster?: string
-  title?: string
-  isYouTube?: boolean
-  youtubeId?: string
-  className?: string
-  aspectRatio?: string
+  src: string;
+  poster?: string;
+  title?: string;
+  isYouTube?: boolean;
+  youtubeId?: string;
+  className?: string;
+  aspectRatio?: string;
 }
 
 export function VideoPlayer({
@@ -23,139 +30,142 @@ export function VideoPlayer({
   className = "",
   aspectRatio = "16/9",
 }: VideoPlayerProps) {
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [isMuted, setIsMuted] = useState(true) // Default to muted for better UX
-  const [isFullscreen, setIsFullscreen] = useState(false)
-  const [progress, setProgress] = useState(0)
-  const [isLoaded, setIsLoaded] = useState(false)
-  const videoRef = useRef<HTMLVideoElement>(null)
-  const containerRef = useRef<HTMLDivElement>(null)
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(true); // Default to muted for better UX
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   // Handle video loading
   useEffect(() => {
-    const video = videoRef.current
-    if (!video || isYouTube) return
+    const video = videoRef.current;
+    if (!video || isYouTube) return;
 
     const handleLoadedData = () => {
-      setIsLoaded(true)
-    }
+      setIsLoaded(true);
+    };
 
-    video.addEventListener("loadeddata", handleLoadedData)
+    video.addEventListener("loadeddata", handleLoadedData);
 
     // Preload metadata only to improve initial load time
-    video.preload = "metadata"
+    video.preload = "metadata";
 
     return () => {
-      video.removeEventListener("loadeddata", handleLoadedData)
-    }
-  }, [isYouTube])
+      video.removeEventListener("loadeddata", handleLoadedData);
+    };
+  }, [isYouTube]);
 
   // Handle progress updates
   useEffect(() => {
-    const video = videoRef.current
-    if (!video || isYouTube) return
+    const video = videoRef.current;
+    if (!video || isYouTube) return;
 
     const updateProgress = () => {
       if (video.duration) {
-        setProgress((video.currentTime / video.duration) * 100)
+        setProgress((video.currentTime / video.duration) * 100);
       }
-    }
+    };
 
     const handleVideoEnd = () => {
-      setIsPlaying(false)
-      video.currentTime = 0
-      setProgress(0)
-    }
+      setIsPlaying(false);
+      video.currentTime = 0;
+      setProgress(0);
+    };
 
-    video.addEventListener("timeupdate", updateProgress)
-    video.addEventListener("ended", handleVideoEnd)
+    video.addEventListener("timeupdate", updateProgress);
+    video.addEventListener("ended", handleVideoEnd);
 
     return () => {
-      video.removeEventListener("timeupdate", updateProgress)
-      video.removeEventListener("ended", handleVideoEnd)
-    }
-  }, [isYouTube])
+      video.removeEventListener("timeupdate", updateProgress);
+      video.removeEventListener("ended", handleVideoEnd);
+    };
+  }, [isYouTube]);
 
   // Handle fullscreen changes
   useEffect(() => {
     const handleFullscreenChange = () => {
-      setIsFullscreen(!!document.fullscreenElement)
-    }
+      setIsFullscreen(!!document.fullscreenElement);
+    };
 
-    document.addEventListener("fullscreenchange", handleFullscreenChange)
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
     return () => {
-      document.removeEventListener("fullscreenchange", handleFullscreenChange)
-    }
-  }, [])
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+    };
+  }, []);
 
   const togglePlay = () => {
-    if (isYouTube) return // YouTube controls handled by iframe
+    if (isYouTube) return; // YouTube controls handled by iframe
 
-    const video = videoRef.current
-    if (!video) return
+    const video = videoRef.current;
+    if (!video) return;
 
     if (isPlaying) {
-      video.pause()
+      video.pause();
     } else {
       // Create a promise to handle autoplay restrictions
-      const playPromise = video.play()
+      const playPromise = video.play();
 
       if (playPromise !== undefined) {
         playPromise
           .then(() => {
             // Autoplay started successfully
-            setIsPlaying(true)
+            setIsPlaying(true);
           })
           .catch((error) => {
             // Autoplay was prevented
-            console.log("Autoplay prevented:", error)
+            console.log("Autoplay prevented:", error);
             // Unmute and try again if it was an autoplay restriction
             if (isMuted) {
-              setIsMuted(false)
-              video.muted = false
+              setIsMuted(false);
+              video.muted = false;
               video
                 .play()
                 .then(() => setIsPlaying(true))
-                .catch((e) => console.log("Still couldn't play:", e))
+                .catch((e) => console.log("Still couldn't play:", e));
             }
-          })
+          });
       }
     }
-    setIsPlaying(!isPlaying)
-  }
+    setIsPlaying(!isPlaying);
+  };
 
   const toggleMute = () => {
-    if (isYouTube) return // YouTube controls handled by iframe
+    if (isYouTube) return; // YouTube controls handled by iframe
 
-    const video = videoRef.current
-    if (!video) return
+    const video = videoRef.current;
+    if (!video) return;
 
-    video.muted = !isMuted
-    setIsMuted(!isMuted)
-  }
+    video.muted = !isMuted;
+    setIsMuted(!isMuted);
+  };
 
   const toggleFullscreen = () => {
-    if (isYouTube) return // YouTube controls handled by iframe
+    if (isYouTube) return; // YouTube controls handled by iframe
 
-    const container = containerRef.current
-    if (!container) return
+    const container = containerRef.current;
+    if (!container) return;
 
     if (!isFullscreen) {
       if (container.requestFullscreen) {
-        container.requestFullscreen()
+        container.requestFullscreen();
       }
     } else {
       if (document.exitFullscreen) {
-        document.exitFullscreen()
+        document.exitFullscreen();
       }
     }
-    setIsFullscreen(!isFullscreen)
-  }
+    setIsFullscreen(!isFullscreen);
+  };
 
   // For YouTube videos
   if (isYouTube && youtubeId) {
     return (
-      <div className={`relative rounded-lg overflow-hidden shadow-lg ${className}`} style={{ aspectRatio }}>
+      <div
+        className={`relative rounded-lg overflow-hidden shadow-lg ${className}`}
+        style={{ aspectRatio }}
+      >
         <iframe
           src={`https://www.youtube.com/embed/${youtubeId}?rel=0&autoplay=0&mute=1`}
           title={title || "YouTube Video"}
@@ -165,7 +175,7 @@ export function VideoPlayer({
           loading="lazy" // Add lazy loading for iframes
         ></iframe>
       </div>
-    )
+    );
   }
 
   // For regular videos
@@ -204,7 +214,11 @@ export function VideoPlayer({
               onClick={togglePlay}
               className="text-white bg-gold/80 hover:bg-gold p-2 rounded-full"
             >
-              {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
+              {isPlaying ? (
+                <Pause className="h-5 w-5" />
+              ) : (
+                <Play className="h-5 w-5" />
+              )}
             </motion.button>
 
             <motion.button
@@ -213,7 +227,11 @@ export function VideoPlayer({
               onClick={toggleMute}
               className="text-white hover:text-gold"
             >
-              {isMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
+              {isMuted ? (
+                <VolumeX className="h-5 w-5" />
+              ) : (
+                <Volume2 className="h-5 w-5" />
+              )}
             </motion.button>
           </div>
 
@@ -223,7 +241,11 @@ export function VideoPlayer({
             onClick={toggleFullscreen}
             className="text-white hover:text-gold"
           >
-            {isFullscreen ? <Minimize className="h-5 w-5" /> : <Maximize className="h-5 w-5" />}
+            {isFullscreen ? (
+              <Minimize className="h-5 w-5" />
+            ) : (
+              <Maximize className="h-5 w-5" />
+            )}
           </motion.button>
         </div>
 
@@ -254,5 +276,5 @@ export function VideoPlayer({
         </div>
       )}
     </div>
-  )
+  );
 }

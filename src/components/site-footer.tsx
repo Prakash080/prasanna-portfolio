@@ -120,7 +120,13 @@ export function SiteFooter() {
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-gold transition-colors"
               >
-                Instagram<Image src={"instagram.svg"} alt={"instagram"} width={32} height={32}/>
+                Instagram
+                <Image
+                  src={"instagram.svg"}
+                  alt={"instagram"}
+                  width={32}
+                  height={32}
+                />
               </Link>
               <Link
                 href={contacts.whatsapp}
@@ -128,7 +134,14 @@ export function SiteFooter() {
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-gold transition-colors"
               >
-                Whatsapp<Image src={"whatsapp.svg"} alt={"whatsapp"} width={24} height={24} className="mt-1"/>
+                Whatsapp
+                <Image
+                  src={"whatsapp.svg"}
+                  alt={"whatsapp"}
+                  width={24}
+                  height={24}
+                  className="mt-1"
+                />
               </Link>
             </div>
             <div className="space-y-2">

@@ -21,7 +21,7 @@ const awards = [
     year: "2019/20",
     description:
       "Celebrating excellence in Bharatanatyam and unwavering dedication to the art form.",
-    image: 'award-image.png',
+    image: "award-image.png",
   },
   {
     id: 2,
@@ -30,7 +30,7 @@ const awards = [
     year: "2021/22",
     description:
       "Recognizing artistic mastery and contributions to classical dance.",
-    image: 'award-image.png',
+    image: "award-image.png",
   },
   {
     id: 3,
@@ -39,7 +39,7 @@ const awards = [
     year: "2018",
     description:
       "Awarded for outstanding skill and stage presence, this national recognition highlights exceptional talent and contributions to the field of classical dance.",
-    image: 'award-image.png',
+    image: "award-image.png",
   },
 ];
 
@@ -82,14 +82,14 @@ const certificates = [
     title: "Divya Chetana Charitable Trust",
     organization: "Saraswathi Nrithyalaya International Academy",
     year: "2021",
-    image: 'certificate-image.png',
+    image: "certificate-image.png",
   },
   {
     id: 2,
     title: "Mahila Samskruthika Utsava",
     organization: "Saraswathi Nrithyalaya International Academy",
     year: "2020/2021",
-    image: 'certificate-image.png',
+    image: "certificate-image.png",
   },
   {
     id: 3,
@@ -98,7 +98,7 @@ const certificates = [
     year: "(2016/17, 2019",
     description:
       "Honored for exceptional solo performance showcasing technical precision and emotional depth.",
-    image: 'certificate-image.png',
+    image: "certificate-image.png",
   },
   {
     id: 4,
@@ -107,7 +107,7 @@ const certificates = [
     year: "2016",
     description:
       "Honored for exceptional solo performance showcasing technical precision and emotional depth.",
-    image: 'certificate-image.png',
+    image: "certificate-image.png",
   },
   {
     id: 5,
@@ -116,7 +116,7 @@ const certificates = [
     year: "2016 – 2021",
     description:
       "Honored for exceptional solo performance showcasing technical precision and emotional depth.",
-    image: 'certificate-image.png',
+    image: "certificate-image.png",
   },
   {
     id: 6,
@@ -125,13 +125,14 @@ const certificates = [
     year: "2021",
     description:
       "Honored for exceptional solo performance showcasing technical precision and emotional depth.",
-    image: 'certificate-image.png',
+    image: "certificate-image.png",
   },
 ];
 
 // Data for Gallery Images
 const excludedIndexes = new Set([
-  0, 1, 2, 3, 4, 5, 6, 10, 12, 19, 22, 24, 30, 31, 36,38, 39, 40, 48, 54, 55, 56, 57
+  0, 1, 2, 3, 4, 5, 6, 10, 12, 19, 22, 24, 30, 31, 36, 38, 39, 40, 48, 54, 55,
+  56, 57,
 ]);
 
 // Define the type for gallery images
@@ -157,4 +158,4 @@ for (let i = 0; i < 58; i++) {
   }
 }
 
-export { awards, pressQuotes, certificates, contacts,galleryImages };
+export { awards, pressQuotes, certificates, contacts, galleryImages };

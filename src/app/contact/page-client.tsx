@@ -235,7 +235,14 @@ export default function ContactPageClient() {
                     rel="noopener noreferrer"
                     className="flex items-center space-x-3 p-1 bg-card rounded-lg hover:bg-muted transition-colors"
                   >
-                    Instagram<Image src={"instagram.svg"} alt={"instagram"} width={32} height={32} className="ml-1"/>
+                    Instagram
+                    <Image
+                      src={"instagram.svg"}
+                      alt={"instagram"}
+                      width={32}
+                      height={32}
+                      className="ml-1"
+                    />
                   </a>
 
                   <a
@@ -244,7 +251,14 @@ export default function ContactPageClient() {
                     rel="noopener noreferrer"
                     className="flex items-center space-x-3 p-1 bg-card rounded-lg hover:bg-muted transition-colors"
                   >
-                    Whatsapp<Image src={"whatsapp.svg"} alt={"whatsapp"} width={24} height={24} className="ml-2"/>
+                    Whatsapp
+                    <Image
+                      src={"whatsapp.svg"}
+                      alt={"whatsapp"}
+                      width={24}
+                      height={24}
+                      className="ml-2"
+                    />
                   </a>
                 </div>
               </div>
