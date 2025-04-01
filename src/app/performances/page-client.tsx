@@ -145,7 +145,7 @@ const workshopVideos = [
 ];
 
 export default function PerformancesPageClient() {
-  const [, setActiveTab] = useState("past");
+  const [, setActiveTab] = useState("workshop");
   const [selectedVideo, setSelectedVideo] = useState<number | null>(null);
   const [showTeaserModal, setShowTeaserModal] = useState<boolean>(false);
   const [selectedTeaser, setSelectedTeaser] = useState<string | null>(null);
@@ -214,7 +214,7 @@ export default function PerformancesPageClient() {
             <TabsContent value="upcoming">
               <div className="space-y-12">
                 {upcomingPerformances.length === 0 ? (
-                  <div className="items-center text-lg flex flex-col font-medium">
+                  <div className="items-center text-lg flex flex-col font-medium text-center">
                     <Mic2 className="h-8 w-8 text-gold" />
                     Upcoming performances will be Announced soon.
                   </div>
